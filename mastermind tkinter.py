@@ -1,4 +1,8 @@
 import random
+import tkinter
+
+root = tkinter.Tk()
+
 code = []
 count_whites = 0
 count_blacks = 0
@@ -15,7 +19,6 @@ def score_guess(guess):
     count_whites = 0
     count_blacks = 0
     
-    #first check for white
     for i in range(4):
         if guess[i] == str(code[i]):
             count_whites += 1
@@ -27,14 +30,11 @@ def score_guess(guess):
                 
     print("whites:" + str(count_whites) +" blacks: " +str(count_blacks))
     if count_whites == 4:
-        #do some win stuff
         print("congradulations you win")
         print("it took you " +str (guess_count) + "guesses")
     elif guess_count == 8:
-        #you ran out of guesses 
         print("you lose. The CIA will not hire you")
     else:
-        #no win no lose keep going
         player_guess()
 
         
@@ -49,11 +49,18 @@ def player_guess():
 
 
 new_code()
-print("welcome to mastermind. You will need to guess a four digit code")
-print("the avalible digits are 0 to 5")
-print("white = good color and black = bad color")
-print("you will get up to 8 turns")
-player_guess()
+
+#buttons for tkinter
+b1 = tkinter.Button(root, width=4, height=2, bg="#00214b")
+b1.grid(row=1, column=0)
+b2 = tkinter.Button(root, width=4, height=2, bg="#999999")
+b2.grid(row=1, column=1)
+b3 = tkinter.Button(root, width=4, height=2, bg="#999999")
+b3.grid(row=1, column=2)
+b4 = tkinter.Button(root, width=4, height=2, bg="#999999")
+b4.grid(row=1, column=3)
+
+root.mainloop()
 
 
 
